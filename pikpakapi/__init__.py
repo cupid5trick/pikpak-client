@@ -772,7 +772,7 @@ class PikPakApi:
         )
         self.captcha_token = result.get("captcha_token")
         result = await self._request_get(
-            url=f"https://{self.PIKPAK_API_HOST}/drive/v1/files/{file_id}?",
+            url=f"https://{self.PIKPAK_API_HOST}/drive/v1/files/{file_id}?usage=FETCH",
         )
         self.captcha_token = None
         return result
