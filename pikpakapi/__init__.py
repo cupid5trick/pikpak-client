@@ -996,3 +996,6 @@ class PikPakApi:
             url=f"https://{self.PIKPAK_API_HOST}/drive/v1/share/restore", data=data
         )
         return result
+
+
+# __all__ = [PikPakApi, PikPakClient]
