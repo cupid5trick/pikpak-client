@@ -3,7 +3,8 @@ name: CI
 on:
   # Trigger when pushing to any branch
   push:
-    - main
+    branches:
+      - main
 
   # Trigger on pull requests to any branch
   pull_request:
@@ -17,7 +18,7 @@ permissions:
 
 jobs:
   ci:
-    runs-on: macos-latest
+    runs-on: linux-latest
     strategy:
       matrix:
         python-version: [3.9, 3.12, 3.14]
@@ -33,4 +34,4 @@ jobs:
         apt update && apt upgrade -y
         apt install poetry
         poetry install
-        ./run_tests.py
+        ./run_tests.sh
