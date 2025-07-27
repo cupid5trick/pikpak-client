@@ -18,10 +18,10 @@ permissions:
 
 jobs:
   ci:
-    runs-on: linux-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.9, 3.12, 3.14]
+        python-version: [3.12]
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
@@ -31,7 +31,11 @@ jobs:
 
     - name: run test script
       run: |
-        apt update && apt upgrade -y
-        apt install poetry
+        set -ex
+        pip install --upgrade pip
+        pip install poetry
         poetry install
-        ./run_tests.sh
+        echo "${{ secrets.PIKPAK_ENV }}" > tests/.env
+        ls -alht tests/
+        test_log=test.$(date +'%Y%m%dT%H%M%S').log
+        poetry run ./run_tests.sh

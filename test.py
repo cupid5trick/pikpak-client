@@ -43,12 +43,8 @@ async def test():
     logger.debug("=" * 30)
 
     logger.debug(
-        f(
-            await client.offline_download(
-                "magnet:?xt=urn:btih:42b46b971332e776e8b290ed34632d5c81a1c47c"
-            )
-        )
-    )
+        f(await client.offline_download(
+            "magnet:?xt=urn:btih:42b46b971332e776e8b290ed34632d5c81a1c47c")))
     logger.debug("=" * 30)
     offline_info = await client.offline_list()
     logger.debug(f(offline_info))
@@ -56,48 +52,41 @@ async def test():
     logger.debug(f(offline_info))
     logger.debug("=" * 30)
     fileid = offline_info["tasks"][0]["file_id"]
-    logger.debug(f(await client.file_list(parent_id=(await client.path_to_id("/My Pack"))[-1]["id"])))
+    logger.debug(
+        f(await client.file_list(
+            parent_id=(await client.path_to_id("/My Pack"))[-1]["id"])))
     logger.debug(f(await client.get_download_url(fileid)))
     logger.debug(f(await client.offline_file_info(fileid)))
 
     logger.debug(
-        f(
-            await client.file_rename(
-                "VNayNjZtsdmka4YrwZWVj-r4o1",
-                "[Nekomoe kissaten][Deaimon][11][1080p][CHS]_01.mp4",
-            )
-        )
-    )
+        f(await client.file_rename(
+            "VNayNjZtsdmka4YrwZWVj-r4o1",
+            "[Nekomoe kissaten][Deaimon][11][1080p][CHS]_01.mp4",
+        )))
     logger.debug("=" * 30)
 
-    logger.debug(f(await client.file_batch_star(ids=["VN6qSS-FBcaI6l7YltWsjUU1o1"])))
+    logger.debug(
+        f(await client.file_batch_star(ids=["VN6qSS-FBcaI6l7YltWsjUU1o1"])))
     logger.debug("=" * 30)
 
-    logger.debug(f(await client.file_batch_unstar(ids=["VN6qSS-FBcaI6l7YltWsjUU1o1"])))
+    logger.debug(
+        f(await client.file_batch_unstar(ids=["VN6qSS-FBcaI6l7YltWsjUU1o1"])))
     logger.debug("=" * 30)
 
     logger.debug(f(await client.file_star_list()))
     logger.debug("=" * 30)
 
     logger.debug(
-        f(
-            await client.file_batch_share(
-                ids=["VN6qSS-FBcaI6l7YltWsjUU1o1"], need_password=True
-            )
-        )
-    )
+        f(await client.file_batch_share(ids=["VN6qSS-FBcaI6l7YltWsjUU1o1"],
+                                        need_password=True)))
     logger.debug("=" * 30)
 
     logger.debug(f(await client.get_quota_info()))
     logger.debug("=" * 30)
 
     logger.debug(
-        f(
-            await client.get_share_info(
-                "https://mypikpak.com/s/VO8BcRb-0fibD0Ncymp8nxSMo1"
-            )
-        )
-    )
+        f(await client.get_share_info(
+            "https://mypikpak.com/s/VO8BcRb-0fibD0Ncymp8nxSMo1")))
 
     test_restore = await client.get_share_info(
         "https://mypikpak.com/s/VO8BcRb-0fibD0Ncymp8nxSMo1/VO8Ba45l-FRcCf559uZjwjFjo1"

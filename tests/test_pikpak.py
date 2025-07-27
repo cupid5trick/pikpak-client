@@ -1,8 +1,5 @@
 import asyncio
-from base64 import b64decode
-from fileinput import filename
 import hashlib
-from io import BufferedReader
 import json
 import logging
 import os

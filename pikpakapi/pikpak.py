@@ -1,7 +1,4 @@
-from fileinput import filename
-from hashlib import md5, sha1
-from io import BufferedReader, BytesIO
-import json
+from hashlib import sha1
 import os
 from pathlib import Path
 from typing import Any, Optional
